@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Orbita.Application;
 using Orbita.Data;
+using Orbita.Data.Repository;
+using Orbita.Model.Interfaces;
+using Orbita.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +21,11 @@ builder.Services.AddDbContext<OrbitaDbContext>(options =>
                 maxRetryCount: 10,
                 maxRetryDelay: TimeSpan.FromSeconds(30),
                 errorNumbersToAdd: null)));
+
+
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IStudentApplication, StudentApplication>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

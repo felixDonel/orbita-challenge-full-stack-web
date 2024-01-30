@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Orbita.Model\Orbita.Model.csproj" />
+  </ItemGroup>
+
 </Project>
