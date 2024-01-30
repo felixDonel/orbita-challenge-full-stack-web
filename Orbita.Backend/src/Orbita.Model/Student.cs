@@ -8,13 +8,13 @@ namespace Orbita.Model
         public int RA { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
-        public int CPF { get; private set; }
+        public long CPF { get; private set; }
         public Student()
         {
             _validator = new StudentValidator();
         }
 
-        public Student(int ra, string name, string email, int cpf) : this()
+        public Student(int ra, string name, string email, long cpf) : this()
         {
             RA = ra;
             Name = name;

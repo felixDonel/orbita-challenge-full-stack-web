@@ -25,7 +25,7 @@ namespace Orbita.Model
                 .Must(CPFValid).WithMessage("Por favor, insira um CPF válido.");
         }
 
-        private bool CPFValid(int cpf)
+        private bool CPFValid(long cpf)
         {
             string cpfStr = cpf.ToString();
             return cpfStr.Length == 11;
