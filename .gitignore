@@ -102,3 +102,15 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+# CSHARP
+bin/
+obj/
+DesignTimeBuild/
+
+# Visual Studio
+*.suo
+*.user
+*.sln.docstates
+FileContentIndex/
