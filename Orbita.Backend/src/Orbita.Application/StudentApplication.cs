@@ -1,4 +1,5 @@
 ﻿using Orbita.Application.DTOs;
+using Orbita.Model;
 using Orbita.Model.Interfaces;
 
 namespace Orbita.Application
@@ -20,11 +21,7 @@ namespace Orbita.Application
 
         public async Task<StudentDTO> GetStudentByRA(int ra)
         {
-            var student = await _studentRepository.GetById(ra);
-            if (student == null)
-            {
-                throw new Exception("Estudante não encontrado");
-            }
+            var student = await GetStudent(ra);
             return new StudentDTO(student);
         }
 
@@ -36,24 +33,14 @@ namespace Orbita.Application
 
         public async Task RemoveStudent(int ra)
         {
-            var student = await _studentRepository.GetById(ra);
-
-            if (student == null)
-            {
-                throw new Exception("Estudante não encontrado");
-            }
+            var student = await GetStudent(ra);
 
             await _studentRepository.Delete(student);
         }
 
         public async Task<StudentDTO> UpdateStudent(StudentDTO updateDto)
         {
-            var student = await _studentRepository.GetById(updateDto.RA);
-
-            if (student == null)
-            {
-                throw new Exception("Estudante não encontrado");
-            }
+            var student = await GetStudent(updateDto.RA);
 
             student.ChangeName(updateDto.Name);
             student.ChangeEmail(updateDto.Email);
@@ -61,6 +48,16 @@ namespace Orbita.Application
             await _studentRepository.Update(student);
 
             return new StudentDTO(student);
+        }
+
+        private async Task<Student> GetStudent(int ra) {
+            var student = await _studentRepository.GetById(ra);
+
+            if (student == null)
+            {
+                throw new Exception("Estudante não encontrado");
+            }
+            return student;
         }
     }
 }

@@ -26,10 +26,6 @@ namespace Orbita.Api.Controllers
         public async Task<IActionResult> GetStudentByRA(int ra)
         {
             var student = await _studentApplication.GetStudentByRA(ra);
-            if (student == null)
-            {
-                return NotFound(new { Message = "Aluno não encontrado", RA = ra });
-            }
             return Ok(student);
         }
 
@@ -43,11 +39,6 @@ namespace Orbita.Api.Controllers
         [HttpDelete("{ra}")]
         public async Task<IActionResult> RemoveStudent(int ra)
         {
-            var student = await _studentApplication.GetStudentByRA(ra);
-            if (student == null)
-            {
-                return NotFound(new { Message = "Aluno não encontrado", RA = ra });
-            }
             await _studentApplication.RemoveStudent(ra);
             return NoContent();
         }
@@ -55,13 +46,7 @@ namespace Orbita.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateStudent([FromBody] StudentDTO updateDto)
         {
-            var student = await _studentApplication.GetStudentByRA(updateDto.RA);
-            if (student == null)
-            {
-                return NotFound(new { Message = "Aluno não encontrado", RA = student.RA });
-            }
-            var updatedStudent = await _studentApplication.UpdateStudent(updateDto);
-            return Ok(updatedStudent);
+            return Ok(await _studentApplication.UpdateStudent(updateDto));
         }
     }
 }
