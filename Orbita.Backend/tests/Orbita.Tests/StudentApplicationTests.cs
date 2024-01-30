@@ -17,7 +17,7 @@ namespace Orbita.Tests
         public async Task RemoveStudent_StudentExists_StudentRemovedSuccessfully()
         {
             // Arrange
-            int studentRA = 12345;
+            int studentRA = HelperTest.StudentValid().RA;
 
             var mockStudentRepository = new Mock<IStudentRepository>();
             var studentService = new StudentApplication(mockStudentRepository.Object);
