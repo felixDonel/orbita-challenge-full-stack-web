@@ -28,7 +28,7 @@
   </template>
   
   <script>
-  import axios from 'axios';
+  import StudentService from '@/services/StudentService';
   import NavegationbarComponent from '../components/NavegationbarComponent.vue';
   
   export default {
@@ -51,27 +51,20 @@
     methods: {
       async getStudent() {
         try {
-          // Obtém o ID da rota
           const id = this.$route.params.id;
-  
-          const response = await axios.get(`https://localhost:7044/Student/${id}`);
-          this.student = response.data;
+          this.student = await StudentService.getStudent(id);
         } catch (error) {
           console.error('Erro ao buscar Aluno:', error);
         }
       },
       async Poststudent() {
         try {
-          const response = await axios.put(`https://localhost:7044/student`, {
+          const response = await StudentService.Poststudent({
             ra: this.student.ra,
             name: this.student.name,
             email: this.student.email,
             cpf: this.student.cpf,
           });
-  
-          console.log('Resposta da solicitação:', response.data);
-  
-  
         } catch (error) {
           console.error('Erro na solicitação:', error);
         }

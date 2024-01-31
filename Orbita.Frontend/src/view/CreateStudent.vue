@@ -25,7 +25,7 @@
   </template>
   
   <script>
-  import axios from 'axios';
+  import StudentService from '@/services/StudentService';
   import NavegationbarComponent from '../components/NavegationbarComponent.vue';
   
   export default {
@@ -45,17 +45,13 @@
       async salvarAluno() {
         try {
   
-          const response = await axios.post(`https://localhost:7044/Student`, {
+          const response = await StudentService.createstudent({
             ra: 0,
             name: this.aluno.nome,
             email: this.aluno.email,
             cpf: this.aluno.cpf,
           });
-  
-          console.log('Resposta da solicitação:', response.data);
-  
           this.limparCampos();
-  
         } catch (error) {
           console.error('Erro na solicitação:', error);
         }
@@ -68,8 +64,4 @@
     }
   };
   </script>
-  
-  <style scoped>
-  /* Estilos específicos para o seu componente, se necessário */
-  </style>
   

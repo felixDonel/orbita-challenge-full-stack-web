@@ -35,8 +35,7 @@
   </template>
   
   <script>
-  import axios from 'axios';
-  
+  import StudentService from '@/services/StudentService';
   import NavegationbarComponent from '../components/NavegationbarComponent.vue';
   
   export default {
@@ -63,8 +62,8 @@
     methods: {
       async getstudents() {
         try {
-          const response = await axios.get('https://localhost:7044/Student');
-          this.students = response.data;
+          
+          this.students = await StudentService.getstudents();
         } catch (error) {
           console.error('Erro ao buscar alunos:', error);
         }
@@ -78,11 +77,9 @@
         this.$router.push('/Aluno/Cadastrar');
       },
   
-      async confirmDeleteAluno(aluno) {
+      async confirmDeleteAluno(student) {
         try {
-          const response = await axios.delete(`https://localhost:7044/student/${aluno.ra}`);
-          console.log('Resposta da solicitação:', response.data);
-          // Atualize a lista de alunos após excluir
+          const response = await StudentService.Deletestudent(student.ra);
           this.getstudents();
         } catch (error) {
           console.error('Erro na solicitação:', error);
