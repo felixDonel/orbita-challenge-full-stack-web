@@ -1,7 +1,8 @@
 ### projeto orbita-challenge-full-stack-web - Processo Seletivo
 
 ## Decisão da Arquitetura Utilizada
-Ao desenvolver o projeto, optei por uma arquitetura modular que segue as melhores práticas e favorece a manutenção e escalabilidade. Organizei o código em três camadas principais: Domain, Application, Data, e API.
+Ao desenvolver o projeto, optei por uma arquitetura modular que segue as melhores práticas e favorece a manutenção e escalabilidade. Organizei o código em Quatro camadas principais: Domain, Application, Data, e API.
+
 **API**
 Na camada API, concentrei os controladores, rotas e a lógica específica da interface de programação do aplicativo. Essa camada é responsável por receber requisições HTTP, interagir com a camada de Application e retornar as respostas adequadas.
 
