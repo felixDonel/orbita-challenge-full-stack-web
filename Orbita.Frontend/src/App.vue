@@ -3,7 +3,6 @@
 <template>
   <v-app>
     <v-container>
-      <h1>teste</h1>
       <router-view></router-view>
     </v-container>
   </v-app>

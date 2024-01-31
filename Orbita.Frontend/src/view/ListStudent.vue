@@ -63,7 +63,7 @@
     methods: {
       async getstudents() {
         try {
-          const response = await axios.get('https://localhost:7018/Student');
+          const response = await axios.get('https://localhost:7044/Student');
           this.students = response.data;
         } catch (error) {
           console.error('Erro ao buscar alunos:', error);
@@ -71,16 +71,16 @@
       },
   
       editAluno(item) {
-        this.$router.push(`/editar-aluno/${item.ra}`);
+        this.$router.push(`/Aluno/Editar/${item.ra}`);
       },
   
       redirectCadastroAluno() {
-        this.$router.push('/cadastro-aluno');
+        this.$router.push('/Aluno/Cadastrar');
       },
   
       async confirmDeleteAluno(aluno) {
         try {
-          const response = await axios.delete(`https://localhost:7018/student/${aluno.ra}`);
+          const response = await axios.delete(`https://localhost:7044/student/${aluno.ra}`);
           console.log('Resposta da solicitação:', response.data);
           // Atualize a lista de alunos após excluir
           this.getstudents();
