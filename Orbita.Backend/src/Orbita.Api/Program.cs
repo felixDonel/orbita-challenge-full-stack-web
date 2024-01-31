@@ -4,6 +4,7 @@ using Orbita.Data;
 using Orbita.Data.Repository;
 using Orbita.Model.Interfaces;
 using Orbita.Model;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<OrbitaDbContext>(options =>
-            options.UseMySql("server=localhost;database=orbita;user=root;password=123456;Port=3306;",
-        ServerVersion.AutoDetect("server=localhost;database=orbita;user=root;password=123456;Port=3306;"),
+            options.UseMySql(builder.Configuration.GetConnectionString("default"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("default")),
         mySqlOptions =>
             mySqlOptions.EnableRetryOnFailure(
                 maxRetryCount: 10,
