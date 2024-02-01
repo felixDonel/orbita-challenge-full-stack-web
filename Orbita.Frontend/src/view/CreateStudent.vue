@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavegationbarComponent title="Alunos"/>
-    <FormStudentComponent :aluno="aluno" :handleSubmit="cadastrarAluno" />
+    <FormStudentComponent :student="student" :handleSubmit="createstudent" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import StudentService from '@/services/StudentService';
 export default {
   data() {
     return {
-      aluno: {
+      student: {
         ra: '',
         name: '',
         email: '',
@@ -26,7 +26,7 @@ export default {
     FormStudentComponent,
   },
   methods: {
-    async cadastrarAluno(formData) {
+    async createstudent(formData) {
       await StudentService.createstudent({cpf: formData.cpf,email: formData.email,name: formData.name});
     },
   },

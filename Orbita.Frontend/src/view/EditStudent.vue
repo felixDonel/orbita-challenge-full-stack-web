@@ -1,19 +1,19 @@
 <template>
   <div>
     <NavegationbarComponent title="Alunos" />
-    <AlunoFormulario :aluno="aluno" :handleSubmit="editarAluno" :readonly="true" />
+    <FormStudentComponent :student="student" :handleSubmit="Putstudent" :readonly="true" />
   </div>
 </template>
 
 <script>
 import NavegationbarComponent from '../components/NavegationbarComponent.vue';
-import AlunoFormulario from '../components/FormStudentComponent.vue';
+import FormStudentComponent from '../components/FormStudentComponent.vue';
 import StudentService from '@/services/StudentService';
 
 export default {
   data() {
     return {
-      aluno: {
+      student: {
         ra: '',
         name: '',
         email: '',
@@ -23,7 +23,7 @@ export default {
   },
   components: {
     NavegationbarComponent,
-    AlunoFormulario,
+    FormStudentComponent,
   },
   created() {
     this.getStudent();
@@ -32,12 +32,12 @@ export default {
     async getStudent() {
       try {
         const id = this.$route.params.id;
-        this.aluno = await StudentService.getStudent(id);
+        this.student = await StudentService.getStudent(id);
       } catch (error) {
         console.error('Erro ao buscar Aluno:', error);
       }
     },
-    async editarAluno(formData) {
+    async Putstudent(formData) {
       await StudentService.Putstudent(formData);
     },
   },

@@ -3,16 +3,16 @@
       <v-container>
         <v-row>
           <v-col cols="12" md="12">
-            <v-text-field v-model="aluno.name" label="Nome" :rules="nameRules" required></v-text-field>
-            <v-messages :value="aluno.name" :error-messages="nameErrors"></v-messages>
+            <v-text-field v-model="student.name" label="Nome" :rules="nameRules" required></v-text-field>
+            <v-messages :value="student.name" :error-messages="nameErrors"></v-messages>
           </v-col>
           <v-col cols="12" md="12">
-            <v-text-field v-model="aluno.email" label="Email" :rules="emailRules" required></v-text-field>
-            <v-messages :value="aluno.email" :error-messages="emailErrors"></v-messages>
+            <v-text-field v-model="student.email" label="Email" :rules="emailRules" required></v-text-field>
+            <v-messages :value="student.email" :error-messages="emailErrors"></v-messages>
           </v-col>
           <v-col cols="12" md="12">
-            <v-text-field v-model="aluno.cpf" label="CPF" :rules="cpfRules" :readonly="readonly" required></v-text-field>
-            <v-messages :value="aluno.cpf" :error-messages="cpfErrors" ></v-messages>
+            <v-text-field v-model="student.cpf" label="CPF" :rules="cpfRules" :readonly="readonly" required></v-text-field>
+            <v-messages :value="student.cpf" :error-messages="cpfErrors" ></v-messages>
           </v-col>
         </v-row>
         <v-row v-if="showSuccessMessage">
@@ -34,7 +34,7 @@
   <script>
 export default {
   props: {
-    aluno: {
+    student: {
       type: Object,
       default: () => ({
         ra: '',
@@ -96,10 +96,10 @@ export default {
     async handleSubmit() {
       try {
         await this.handleSubmit({
-          ra: this.aluno.ra,
-          name: this.aluno.name,
-          email: this.aluno.email,
-          cpf: this.aluno.cpf,
+          ra: this.student.ra,
+          name: this.student.name,
+          email: this.student.email,
+          cpf: this.student.cpf,
         });
         this.showSuccessMessage = true;
       } catch (error) {
