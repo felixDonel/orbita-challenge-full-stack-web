@@ -29,4 +29,4 @@ Backend (.NET):
 
 ## O que você melhoraria se tivesse mais tempo
 - Utilizar o Vuex: penso que é uma ferramenta que iria ajudar pra evolução do projeto.
-- faria mais testes no backend, pra ter uma maior cobertura.
+- maior cobertura de testes, aumentaria a quantidade de teste unitario realizado no projeto.
