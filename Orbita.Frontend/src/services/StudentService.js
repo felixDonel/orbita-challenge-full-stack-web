@@ -34,7 +34,7 @@ export default {
       console.error('Erro na solicitação:', error);
       throw error;
     }
-  },async Poststudent(student) {
+  },async Putstudent(student) {
     try {
       return await axios.put(`/student`, student);
     } catch (error) {
