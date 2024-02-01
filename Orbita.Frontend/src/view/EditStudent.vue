@@ -78,7 +78,7 @@ export default {
     cpfRules() {
       return [
         value => !!value || 'CPF é obrigatório.',
-        value => (value && value.length === 11) || 'CPF deve ter 11 caracteres.',
+        value => (value && /^\d{11}$/.test(value)) || 'CPF deve ter 11 números.',
       ];
     },
   },
