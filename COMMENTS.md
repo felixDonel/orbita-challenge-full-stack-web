@@ -28,5 +28,5 @@ Backend (.NET):
 - Pomelo.EntityFrameworkCore.MySql: Provedor do Entity Framework Core para MySQL.
 
 ## O que você melhoraria se tivesse mais tempo
-- Utilizar o Vuex: por hora, não consegui utilizar o Vuex, como é o primeiro contato com o Vue, tive uma pequena dificuldade de utilizar o Vuex.
-
+- Utilizar o Vuex: penso que é uma ferramenta que iria ajudar pra evolução do projeto.
+- faria mais testes no backend, pra ter uma maior cobertura.
