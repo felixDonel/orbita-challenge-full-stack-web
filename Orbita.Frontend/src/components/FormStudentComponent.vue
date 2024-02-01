@@ -11,8 +11,8 @@
             <v-messages :value="aluno.email" :error-messages="emailErrors"></v-messages>
           </v-col>
           <v-col cols="12" md="12">
-            <v-text-field v-model="aluno.cpf" label="CPF" :rules="cpfRules" required></v-text-field>
-            <v-messages :value="aluno.cpf" :error-messages="cpfErrors"></v-messages>
+            <v-text-field v-model="aluno.cpf" label="CPF" :rules="cpfRules" :readonly="readonly" required></v-text-field>
+            <v-messages :value="aluno.cpf" :error-messages="cpfErrors" ></v-messages>
           </v-col>
         </v-row>
         <v-row v-if="showSuccessMessage">
@@ -42,6 +42,10 @@ export default {
         email: '',
         cpf: '',
       }),
+      readonly: {
+      type: Boolean,
+      default: false,
+    },
     },
     handleSubmit: {
       type: Function,

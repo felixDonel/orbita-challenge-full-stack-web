@@ -7,7 +7,7 @@
 
 <script>
 import NavegationbarComponent from '../components/NavegationbarComponent.vue';
-import FormStudentComponent from '../components/FormStudentComponent.vue.vue';
+import FormStudentComponent from '../components/FormStudentComponent.vue';
 import StudentService from '@/services/StudentService';
 
 export default {
