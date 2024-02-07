@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavegationbarComponent title="Alunos" />
+    <NavegationbarComponent title="Editar Aluno" />
     <FormStudentComponent :student="student" :handleSubmit="Putstudent" :readonly="true" />
   </div>
 </template>

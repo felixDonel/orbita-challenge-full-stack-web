@@ -1,6 +1,6 @@
 <template>
     <v-container>
-      <NavegationbarComponent title="Alunos" />
+      <NavegationbarComponent title="Aluno" />
   
       <v-data-table
         :headers="headers"
