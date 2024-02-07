@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Orbita.Application.DTOs;
 using Orbita.Application;
+using Orbita.Model.Exceptions;
+using FluentValidation;
 
 namespace Orbita.Api.Controllers
 {
@@ -18,35 +20,92 @@ namespace Orbita.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllStudents()
         {
-            var students = await _studentApplication.GetAllStudents();
-            return Ok(students);
+            try
+            {
+                var students = await _studentApplication.GetAllStudents();
+                return Ok(students);
+            }
+            catch (Exception ex)
+            {
+
+                return HandleException(ex);
+            }
         }
 
         [HttpGet("{ra}")]
         public async Task<IActionResult> GetStudentByRA(int ra)
         {
-            var student = await _studentApplication.GetStudentByRA(ra);
-            return Ok(student);
+            try
+            {
+                var student = await _studentApplication.GetStudentByRA(ra);
+                return Ok(student);
+            }
+            catch (Exception ex)
+            {
+
+                return HandleException(ex);
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateStudent([FromBody] StudentDTO studentDTO)
         {
-            var createdStudent = await _studentApplication.CreateStudent(studentDTO);
-            return CreatedAtAction("GetStudentByRA", new { RA = createdStudent.RA }, createdStudent);
+            try
+            {
+                var createdStudent = await _studentApplication.CreateStudent(studentDTO);
+                return CreatedAtAction("GetStudentByRA", new { RA = createdStudent.RA }, createdStudent);
+            }
+            catch (Exception ex)
+            {
+
+                return HandleException(ex);
+            }
+           
         }
 
         [HttpDelete("{ra}")]
         public async Task<IActionResult> RemoveStudent(int ra)
         {
-            await _studentApplication.RemoveStudent(ra);
-            return NoContent();
+            try
+            {
+                await _studentApplication.RemoveStudent(ra);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+
+                return HandleException(ex);
+            }
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateStudent([FromBody] StudentDTO updateDto)
         {
-            return Ok(await _studentApplication.UpdateStudent(updateDto));
+            try
+            {
+                return Ok(await _studentApplication.UpdateStudent(updateDto));
+            }
+            catch (Exception ex)
+            {
+
+                return HandleException(ex);
+            }
+        }
+
+        private IActionResult HandleException(Exception ex)
+        {
+            if (ex is NotFoundException)
+            {
+                return NotFound(ex.Message);
+            }
+            else if (ex is ValidationException)
+            {
+                return BadRequest(ex.Message);
+            }
+            else
+            {
+                return StatusCode(500, "Erro interno do servidor");
+            }
         }
     }
 }

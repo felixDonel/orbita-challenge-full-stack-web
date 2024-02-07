@@ -1,5 +1,6 @@
 ﻿using Orbita.Application.DTOs;
 using Orbita.Model;
+using Orbita.Model.Exceptions;
 using Orbita.Model.Interfaces;
 
 namespace Orbita.Application
@@ -55,7 +56,7 @@ namespace Orbita.Application
 
             if (student == null)
             {
-                throw new Exception("Estudante não encontrado");
+                throw new NotFoundException("Estudante não encontrado");
             }
             return student;
         }
