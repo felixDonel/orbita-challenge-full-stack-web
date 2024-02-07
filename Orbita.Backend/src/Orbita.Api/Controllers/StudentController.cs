@@ -28,7 +28,7 @@ namespace Orbita.Api.Controllers
             catch (Exception ex)
             {
 
-                return HandleException(ex);
+                throw;
             }
         }
 
@@ -43,7 +43,7 @@ namespace Orbita.Api.Controllers
             catch (Exception ex)
             {
 
-                return HandleException(ex);
+                throw;
             }
         }
 
@@ -58,7 +58,7 @@ namespace Orbita.Api.Controllers
             catch (Exception ex)
             {
 
-                return HandleException(ex);
+                throw;
             }
            
         }
@@ -74,7 +74,7 @@ namespace Orbita.Api.Controllers
             catch (Exception ex)
             {
 
-                return HandleException(ex);
+                throw;
             }
         }
 
@@ -88,23 +88,7 @@ namespace Orbita.Api.Controllers
             catch (Exception ex)
             {
 
-                return HandleException(ex);
-            }
-        }
-
-        private IActionResult HandleException(Exception ex)
-        {
-            if (ex is NotFoundException)
-            {
-                return NotFound(ex.Message);
-            }
-            else if (ex is ValidationException)
-            {
-                return BadRequest(ex.Message);
-            }
-            else
-            {
-                return StatusCode(500, "Erro interno do servidor");
+                throw;
             }
         }
     }

@@ -5,6 +5,7 @@ using Orbita.Data.Repository;
 using Orbita.Model.Interfaces;
 using Orbita.Model;
 using Microsoft.Extensions.Configuration;
+using Orbita.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,7 +44,7 @@ app.UseCors(options => options
     .AllowAnyHeader());
 
 app.UseHttpsRedirection();
-
+app.UseExceptionHandlingMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();
